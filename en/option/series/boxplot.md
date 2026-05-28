@@ -261,6 +261,12 @@ Select state of single data.
     hasType = true
 ) }}
 
+{{ use: partial-clip(
+    prefix = "#",
+    version = "6.1.0",
+    seriesType = "boxplot"
+) }}
+
 {{ use: partial-z-zlevel(
     prefix = "#",
     componentName = "Boxplot "

@@ -1,9 +1,9 @@
 
 {{ target: partial-cursor }}
 
-#${prefix|default('#')} cursor(string) = 'pointer'
+#${prefix|default('#')} ${prop|default("cursor")}(string) = ${defaultValue|default("pointer")}
 
-<ExampleUIControlEnum options="auto,pointer,move" default="pointer" />
+<ExampleUIControlEnum options="auto,pointer,move,grab,grabbing" default="pointer" />
 
 {{ if: ${version} }}
 {{ use: partial-version(
@@ -11,5 +11,4 @@
 ) }}
 {{ /if }}
 
-鼠标悬浮时在图形元素上时鼠标的样式是什么。同 CSS 的 `cursor`。
-
+${targetDesc|default("鼠标悬浮时在图形元素上时")}鼠标的样式是什么。同 CSS 的 `cursor`。

@@ -7,7 +7,7 @@
 
 Pictorial bar chart is a type of bar chart that customized glyph (like images, [SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData)) can be used instead of rectangular bar. This kind of chart is usually used in infographic.
 
-Pictorial bar chart can only be used in [rectangular coordinate](~grid) with at least 1 category axis.
+Pictorial bar chart can only be used in [Cartesian coordinate system (i.e., grid component)](~grid).
 
 
 **Example:**
@@ -310,7 +310,9 @@ Select state of the specified single data.
 
 {{ use: partial-clip(
     prefix = "#",
-    defaultClip = false
+    defaultClip = false,
+    version = "5.5.0",
+    seriesType = "pictorialBar"
 ) }}
 
 {{ use: partial-z-zlevel(

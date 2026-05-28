@@ -121,3 +121,30 @@ matrix: {
     // ...
 }
 ```
+
+## triggerEvent(boolean) = false
+
+{{ use: partial-trigger-event-common-content(
+    version = "6.1.0"
+) }}
+
+Parameters of the event include:
+
+```ts
+{
+    componentType: 'matrix';
+    // legend component index. (based on echarts option)
+    componentIndex: number;
+    // The same as `componentIndex`.
+    matrixIndex: number;
+
+    targetType: 'x' | 'y' | 'body' | 'corner';
+
+    // Displayed cell text.
+    name: string;
+    // Cell value (provided by echarts option).
+    value: textValue;
+    // Cell coord. That is `MatrixXYLocator[]`.
+    coord: number;
+}
+```

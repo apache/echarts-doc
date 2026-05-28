@@ -337,7 +337,8 @@ const option = {
 ) }}
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "scatter"
 ) }}
 
 {{ use: partial-z-zlevel(

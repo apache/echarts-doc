@@ -5,7 +5,7 @@
 
 **象形柱图**
 
-象形柱图是可以设置各种具象图形元素（如图片、[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 等）的柱状图。往往用在信息图中。用于有至少一个类目轴或时间轴的[直角坐标系](~grid)上。
+象形柱图是可以设置各种具象图形元素（如图片、[SVG PathData](http://www.w3.org/TR/SVG/paths.html#PathData) 等）的柱状图。往往用在信息图中。目前只支持用于 [直角坐标系（即grid 组件）](~grid) 上。
 
 **示例：**
 ~[800x400](${galleryViewPath}pictorialBar-hill&reset=1&edit=1)
@@ -359,7 +359,9 @@ option = {
 
 {{ use: partial-clip(
     prefix = "#",
-    defaultClip = false
+    defaultClip = false,
+    version = "5.5.0",
+    seriesType = "pictorialBar"
 ) }}
 
 {{ use: partial-z-zlevel(

@@ -281,7 +281,8 @@ Label of a single line. Available when [polyline](~series-lines.polyline) is not
 ) }}
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "lines"
 ) }}
 
 {{ use: partial-z-zlevel(

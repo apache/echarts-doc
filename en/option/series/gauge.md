@@ -195,7 +195,9 @@ Whether to clip overflow.
 The style of progress.
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    defaultColor = "'auto'",
+    colorExtraInfo = "Notice: value 'auto' is supported since `v6.1.0`"
 ) }}
 
 ## splitLine(Object)

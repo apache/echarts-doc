@@ -7,19 +7,39 @@
 
 #${prefix} triggerEvent(boolean) = false
 
-坐标轴的标签是否响应和触发鼠标事件，默认不响应。
+{{ use: partial-trigger-event-common-content() }}
 
 事件参数如下：
 
 ```ts
 {
-    // 组件类型，xAxis, yAxis, radiusAxis, angleAxis
-    // 对应组件类型都会有一个属性表示组件的 index，例如 xAxis 就是 xAxisIndex
-    componentType: string,
-    // 未格式化过的刻度值, 点击刻度标签有效
-    value: '',
-    // 坐标轴名称, 点击坐标轴名称有效
-    name: ''
+    // Component type. 例如：
+    // 'xAxis'、'yAxis'、'radiusAxis'、'angleAxis'、
+    // 'singleAxis'、'parallelAxis'、'radar' 等。
+    componentType: string;
+    componentIndex: number;
+    // 和 `componentIndex` 相同。
+    [componentType]Index?: number;
+
+    // 事件的触发者。
+    targetType: 'axisLabel' | 'axisName';
+
+    // 被内置的 formatter 格式化过的标签字符串。
+    // 但是用户提供的 `axisLabel.formatter` 并不影响这个值。
+    // 仅当 `targetType: 'axisLabel'` 时存在。
+    value?: string;
+
+    // 仅当此标签为断轴（"axis break"）标签时存在。
+    break?: {
+        // 断轴起始值。
+        start?: number;
+        // 断轴终止值。
+        end?: number;
+    };
+
+    // 即 `axis.name`。
+    // 仅当 `targetType: 'axisName'` 时存在。
+    name?: string;
 }
 ```
 
@@ -264,11 +284,13 @@ myChart.setOption({
 {{ /if }}
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
-##${prefix} onZero(boolean) = true
+##${prefix} onZero(boolean|string) = 'auto'
 
-<ExampleUIControlBoolean default="true" />
+<ExampleUIControlEnum options="auto,true,false" default="auto" />
 
-X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上，只有在另一个轴为数值轴且包含 0 刻度时有效。
+X 轴或者 Y 轴的轴线是否在另一个轴的 0 刻度上。只有在另一个轴为 [数值轴（'value'）](~xAxis.type) 且包含 0 刻度时有效。
+
+{{ use: partial-version(version = '6.1.0', feature="值 'auto' ") }}
 
 ##${prefix} onZeroAxisIndex(number)
 
@@ -784,7 +806,7 @@ splitLine: {
     时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
 
 + `'log'`
-    对数轴。适用于对数数据。对数轴下的堆积柱状图或堆积折线图可能带来很大的视觉误差，并且在一定情况下可能存在非预期效果，应避免使用。
+    对数轴。当数据跨越非常大的数值范围时，或者数据中一些重要模式往往呈现“倍数变化”时，可考虑使用。
 
 
 {{ target: axis-common }}
@@ -1071,15 +1093,20 @@ max: function (value) {
 
 对数轴的底数，只在对数轴中（[type](~${componentType}.type): 'log'）有效。
 
-#${prefix} startValue(number)
+#${prefix} startValue(number) = 0
 
-<ExampleUIControlNumber />
+<ExampleUIControlNumber default="0"/>
 
 {{ use: partial-version(
     version = '5.5.1'
 ) }}
+<div class="doc-partial-version">
+`v6.1.0`前（不包含），`startValue` 也会被用于 [axis.min](~yAxis.min) 若其未被指定。自从 `v6.1.0`，这两个配置项不再相关。
+</div>
 
-用于指定轴的起始值。
+系列图形的起始值。目前只适用于 [柱状图（bar）](~series-bar) and [象形柱状图（pictorialBar）](~series-pictorialBar)。
+
+注：目前不支持 `startValue` 和 [stack](~series-bar.stack) 同时使用（其效果可能不符合预期）。
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
@@ -1209,6 +1236,8 @@ ${name}的显示间隔，在类目轴中有效。{{ if: !${isAxisLabel} }}默认
 formatter: '{value} kg'
 // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
 formatter: function (value, index, extra?) {
+    // 注意：当使用 `customValues` 时，自从 `v6.1.0`，
+    // 这里才会提供 `index`。
     return value + 'kg';
 }
 ```

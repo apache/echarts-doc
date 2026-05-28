@@ -7,21 +7,39 @@ Set this to `true`, to prevent interaction with the axis.
 
 #${prefix} triggerEvent(boolean) = false
 
-Set this to `true` to enable triggering events.
+{{ use: partial-trigger-event-common-content() }}
 
 Parameters of the event include:
 
 ```ts
 {
-    // Component type: xAxis, yAxis, radiusAxis, angleAxis
-    // Each of which has an attribute for index, e.g., xAxisIndex for xAxis
-    componentType: string,
-    // Value on axis before being formatted.
-    // Click on value label to trigger event.
-    value: '',
-    // Name of axis.
-    // Click on label name to trigger event.
-    name: ''
+    // Component type, e.g.,
+    // 'xAxis', 'yAxis', 'radiusAxis', 'angleAxis',
+    // 'singleAxis', 'parallelAxis', 'radar', etc.
+    componentType: string;
+    componentIndex: number;
+    // The same as `componentIndex`.
+    [componentType]Index?: number;
+
+    // The emitter of this event.
+    targetType: 'axisLabel' | 'axisName';
+
+    // A label string formatted by a built-in formatter;
+    // User-provided `axisLabel.formatter` does not affect this value.
+    // Present when `targetType: 'axisLabel'`.
+    value?: string;
+
+    // Present only if this is an axis label for "axis break".
+    break?: {
+        // Parsed break start.
+        start?: number;
+        // Parsed break start.
+        end?: number;
+    };
+
+    // `axis.name`.
+    // Present when `targetType: 'axisName'`.
+    name?: string;
 }
 ```
 
@@ -266,11 +284,13 @@ Set this to `false` to prevent the axis line from showing.
 {{ /if }}
 
 {{ if: ${componentType} == 'xAxis' || ${componentType} == 'yAxis' }}
-##${prefix} onZero(boolean) = true
+##${prefix} onZero(boolean|string) = 'auto'
 
-<ExampleUIControlBoolean default="true" />
+<ExampleUIControlEnum options="auto,true,false" default="auto" />
 
-Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis. Valid only if the other axis is of value type, and contains 0 value.
+Specifies whether X or Y axis lies on the origin position (i.e., `0` point) of its orthogonal axis. It works only if the orthogonal axis is ['value' | 'log'](~xAxis.type) axis and contains `0`.
+
+{{ use: partial-version(version = '6.1.0', feature="The value 'auto' is introduced") }}
 
 ##${prefix} onZeroAxisIndex(number)
 
@@ -788,7 +808,7 @@ Option:
     Time axis, suitable for continuous time series data. As compared to value axis, it has a better formatting for time and a different tick calculation method. For example, it decides to use month, week, day or hour for tick based on the range of span.
 
 + `'log'`
-    Log axis, suitable for log data. Stacked bar or line series with `type: 'log'` axes may lead to significant visual errors and may have unintended effects in certain circumstances. Their use should be avoided.
+    Logarithmic axis. It is useful when the data spans a very large range of values or when the important pattern is about multiplicative change rather than additive change.
 
 
 {{ target: axis-common }}
@@ -1075,15 +1095,21 @@ This is unavailable for 'category' and 'time' axes. Logged value should be passe
 
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
 
-#${prefix} startValue(number)
+#${prefix} startValue(number) = 0
 
-<ExampleUIControlNumber />
+<ExampleUIControlNumber default="0" />
 
 {{ use: partial-version(
     version = '5.5.1'
 ) }}
+<div class="doc-partial-version">
+Before `v6.1.0` (exclusive), `startValue` is also used as [axis.min](~yAxis.min) if it is not provided. Since `v6.1.0`, the two options are no longer associated.
+</div>
 
-To specify the start value of the axis.
+This is the start value of series shapes. Currently, it can be used only for [bar](~series-bar) and [pictorialBar](~series-pictorialBar).
+
+Note: Currently, `startValue` is not supported to be used together with [stack](~series-bar.stack) -- the effect may be unexpected.
+
 
 {{ use: partial-axis-common-axis-line(
     prefix = ${prefix},
@@ -1215,6 +1241,8 @@ Example:
 formatter: '{value} kg'
 // Use callback.
 formatter: function (value, index, extra?) {
+    // Notice: when using `customValues`, parameter `index` is
+    // provided since `v6.1.0`.
     return value + 'kg';
 }
 ```
@@ -1229,7 +1257,7 @@ formatter: function (value, index, extra?) {
 The break info can be obtained from the `extra` param:
 ```ts
 type AxisLabelFormatterExtraBreakPart = {
-    // If this label is a axis break start or end.
+    // If this label is an axis break start or end.
     break?: {
         type: 'start' | 'end';
         // The parsed `start`/`end`, always be numbers, and has been

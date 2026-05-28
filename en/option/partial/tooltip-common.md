@@ -396,8 +396,12 @@ Interface:
 ```
 
 {{ use: partial-version(
-    feature = '`dataIndex` is provided',
+    feature = '`dataIndex` is provided; but not reasonable when `dataZoom` exists, since it is the index after dataZoom filtering.',
     version = '5.5.0'
+) }}
+{{ use: partial-version(
+    feature = '`dataIndex` is corrected to the index before `dataZoom` filtering.',
+    version = '6.1.0'
 ) }}
 
 Example:

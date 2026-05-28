@@ -401,8 +401,12 @@ tooltip 中数值显示部分的格式化回调函数。
 ```
 
 {{ use: partial-version(
-    feature = '`dataIndex` 参数',
-    version = '5.3.0'
+    feature = '`dataIndex` 参数。但是其值当 `dataZoom` 存在时不合理，因为所取的值是数据被 `dataZoom` 过滤后的 index。',
+    version = '5.5.0'
+) }}
+{{ use: partial-version(
+    feature = '`dataIndex` 参数修正 `dataZoom` 过滤前的 index',
+    version = '6.1.0'
 ) }}
 
 示例：

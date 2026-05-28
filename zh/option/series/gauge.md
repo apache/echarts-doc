@@ -208,7 +208,9 @@ color: [
 进度条样式。
 
 {{ use: partial-item-style(
-    prefix = "###"
+    prefix = "###",
+    defaultColor = "'auto'",
+    colorExtraInfo = "自 `v6.1.0` 起 'auto' 才被支持。"
 ) }}
 
 ## splitLine(Object)

@@ -123,7 +123,16 @@ const option = {
 
 ## triggerEvent(boolean) = false
 
-是否触发事件。
+{{ use: partial-trigger-event-common-content() }}
+
+事件对象的内容为：
+```ts
+{
+    componentType: 'title';
+    // title 组件的 index（基于 echarts option）。
+    componentIndex: number;
+}
+```
 
 ## padding(number|Array) = 5
 

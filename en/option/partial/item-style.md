@@ -23,6 +23,8 @@ Supports callback functions, in the form of:
 Input parameters are `seriesIndex`, `dataIndex`, `data`, `value`, and etc. of data item.
 {{ /if }}
 
+${colorExtraInfo}
+
 #${prefix} borderColor(Color) = ${defaultBorderColor|default("'#000'")}
 
 <ExampleUIControlColor />

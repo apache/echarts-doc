@@ -286,7 +286,8 @@ Select state of single data.
 
 {{ use: partial-clip(
     prefix = "#",
-    version = "4.5.0"
+    version = "4.5.0",
+    seriesType = "candlestick"
 ) }}
 
 {{ use: partial-z-zlevel(
@@ -310,6 +311,10 @@ Select state of single data.
 
 {{ use: partial-tooltip-in-series() }}
 
+{{ use: partial-cursor(
+    prefix = "#",
+    version = "6.1.0"
+) }}
 
 
 {{ target: partial-candlestick-item-style-detail }}

@@ -268,7 +268,8 @@ Select state of single data.
 ) }}
 
 {{ use: partial-clip(
-    prefix = "#"
+    prefix = "#",
+    seriesType = "scatter"
 ) }}
 
 {{ use: partial-z-zlevel(
