@@ -373,6 +373,10 @@ const option = {
 
 节点的值，在 tooltip 中显示。
 
+### children(Array)
+
+递归定义的子节点，结构同 [series-tree.data](~series-tree.data)。
+
 ### collapsed(boolean)
 
 节点初始化是否折叠。

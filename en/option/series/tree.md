@@ -331,6 +331,10 @@ The name of the tree node, used to identify each node.
 
 The value of the node, displayed in the tooltip.
 
+### children(Array)
+
+The children nodes defined recursively. The structure is the same as [series-tree.data](~series-tree.data).
+
 ### collapsed(boolean)
 
 Whether to collapse node at initialization.

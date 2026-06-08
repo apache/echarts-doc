@@ -174,6 +174,12 @@ option = {
 
 是否显示工具栏组件。
 
+## backgroundColor(Color) = 'transparent'
+
+<ExampleUIControlColor default="transparent" />
+
+工具栏组件的背景色。
+
 ## orient(string) = 'horizontal'
 
 <ExampleUIControlEnum options="vertical,horizontal" />
@@ -631,4 +637,3 @@ option = {
     ...
 }
 ```
-
