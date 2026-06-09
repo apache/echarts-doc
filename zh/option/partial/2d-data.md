@@ -49,6 +49,10 @@ formatter: '{b}: {@score}'
 
 如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetIndex` 指定本系列使用哪个 [dataset](~dataset)。
 
+## datasetId(string|number)
+
+如果 [series.data](~series.data) 没有指定，并且 [dataset](~dataset) 存在，那么就会使用 [dataset](~dataset)。`datasetId` 通过 dataset 的 `id` 指定本系列使用哪个 [dataset](~dataset)。
+
 
 
 {{ target: partial-2d-data-desc }}
@@ -171,4 +175,3 @@ series: [{
 当某数据不存在时（ps：*不存在*不代表值为 0），可以用 `'-'` 或者 `null` 或者 `undefined` 或者 `NaN` 表示。
 
 例如，无数据在折线图中可表现为该点是断开的，在其它图中可表示为图形不存在。
-

@@ -342,7 +342,8 @@ The lable style of this node.
 
 {{ use: partial-label(
     prefix = "###",
-    labelMargin = true
+    labelMargin = true,
+    formatter1d = true
 ) }}
 
 ### emphasis(Object)
@@ -454,6 +455,8 @@ The value of edge, which decides the width of edge.
     prefix = "###",
     state = "select"
 ) }}
+
+{{ use: partial-tooltip-in-series-data() }}
 
 ## edges(Array)
 

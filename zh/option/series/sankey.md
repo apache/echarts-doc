@@ -345,7 +345,8 @@ data: [{
 
 {{ use: partial-label(
     prefix = "###",
-    labelMargin = true
+    labelMargin = true,
+    formatter1d = true
 ) }}
 
 ### emphasis(Object)
@@ -457,6 +458,8 @@ links: [{
     prefix = "###",
     state = "select"
 ) }}
+
+{{ use: partial-tooltip-in-series-data() }}
 
 ## edges(Array)
 

@@ -196,6 +196,23 @@
 
 {{ target: partial-tooltip-common }}
 
+{{ if: ${scope} === 'series' || ${scope} === 'seriesData' }}
+#${prefix} show(boolean) = true
+
+是否显示提示框。
+
+{{ /if }}
+{{ if: ${scope} === 'series' }}
+#${prefix} trigger(string|boolean) = 'item'
+
+覆盖本系列的提示框触发类型。
+
+可选值：
++ `'item'`
++ `'axis'`
++ `'none'` 或 `false`：不触发本系列提示框。
+
+{{ /if }}
 #${prefix} position(string|Array|Function)
 
 {{ use: partial-tooltip-scope-tip(

@@ -118,6 +118,14 @@ See also [outerBounds example](${galleryEditorPath}doc-example/grid-outerBounds&
     needShow = true
 ) }}
 
+## opacity(number) = 1
+
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="1" />
+
+Opacity of grid background and border.
+
+**Attention**: Works only if `show: true` is set.
+
 {{ use: partial-tooltip-in-coords() }}
 
 {{ use: partial-coord-sys(

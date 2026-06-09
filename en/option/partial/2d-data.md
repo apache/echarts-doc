@@ -51,6 +51,10 @@ Check this [example](${galleryEditorPath}dataset-series-layout-by).
 
 If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetIndex` specifies which dataset will be used.
 
+## datasetId(string|number)
+
+If [series.data](~series.data) is not specified, and [dataset](~dataset) exists, the series will use `dataset`. `datasetId` specifies which dataset will be used by the `id` of the dataset.
+
 
 
 {{ target: partial-2d-data-desc }}
@@ -183,4 +187,3 @@ When needing to customize a data item, it can be set as an object, where propert
 For example, line chart can break when encounter an empty value, and scatter chart do not display graphic elements for empty values.
 
 <br><br>
-

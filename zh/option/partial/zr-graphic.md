@@ -316,6 +316,10 @@ font: 'bolder 2em "Microsoft YaHei", sans-serif'
 
 垂直对齐方式，取值：`'top'`, `'middle'`, `'bottom'`。
 
+###${prefix} rich(Object)
+
+富文本样式。键名为样式名，值为对应富文本片段的样式定义。
+
 {{ use: partial-graphic-cpt-style-prop-common(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -2167,4 +2171,3 @@ type TransformProp =
 ```
 
 也参见这个 [例子](${galleryEditorPath}custom-spiral-race&edit=1&reset=1)。
-

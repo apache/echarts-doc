@@ -134,6 +134,10 @@ Configurations of select state. Available when [selectedMode](~series-heatmap.se
     prefix = "#"
 ) }}
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
+
 {{ use: partial-seriesLayoutBy() }}
 
 {{ use: partial-datasetIndex() }}
@@ -240,4 +244,3 @@ Style of a single data point. It is valid with [coordinateSystem](~series-heatma
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
-

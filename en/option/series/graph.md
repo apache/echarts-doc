@@ -550,6 +550,8 @@ Select state of specified edge.
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ### symbol(Array|string)
 
 Symbol of edge ends. Can be an array with two item to specify two ends, or a string specifies both ends.

@@ -100,7 +100,6 @@ encode: {
 
 This is an [example](${galleryViewPath}dataset-encode1&edit=1&reset=1) for `encode`.
 
-
 Specially, in [custom series(~series-custom), some property in `encode`, corresponding to axis, can be set as null to make the series not controlled by the axis, that is, the series data will not be count in the extent of the axis, and the [dataZoom](~dataZoom) on the axis will not filter the series.
 
 
@@ -138,6 +137,14 @@ var option = {
     }
 };
 ```
+
+##${prefix} label(string|number|Array)
+
+Specify the dimension or dimensions used for the default label content.
+
+##${prefix} itemName(string|number|Array)
+
+Specify the dimension used as the data item name. The name is used by default labels and tooltips. For series whose legend represents data items, such as `pie` and `funnel`, it is also used as the legend item name.
 
 
 
@@ -197,4 +204,3 @@ Each data item of `dimensions` can be:
     + displayName: `string`, generally used in tooltip for dimension display. If not specified, use `name` by default.
 
 When `dimensions` is specified, the default `tooltip` will be displayed vertically, which is better to show dimension names. Otherwise, `tooltip` will displayed only value horizontally.
-

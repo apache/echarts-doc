@@ -154,6 +154,14 @@ grid 区域是否包含坐标轴的[刻度标签](~yAxis.axisLabel)。
     needShow = true
 ) }}
 
+## opacity(number) = 1
+
+<ExampleUIControlNumber min="0" max="1" step="0.01" default="1" />
+
+直角坐标系网格背景和边框的透明度。
+
+**注意**：此配置项生效的前提是，设置了 `show: true`。
+
 {{ use: partial-tooltip-in-coords() }}
 
 {{ use: partial-coord-sys(
