@@ -186,7 +186,7 @@ option = {
 ## padding(number|Array) = 15
 
 {{ use: partial-padding(
-    componentName = "toolbox",
+    componentName = "工具栏组件",
     defaultPadding: 15
 ) }}
 
