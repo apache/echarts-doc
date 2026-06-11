@@ -58,10 +58,11 @@ ${componentName}的边框线宽。
 
 <ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
 
-圆角半径，单位px，支持传入数组分别指定 4 个圆角半径。
-如:
-```
+圆角半径，单位为像素 (px)。支持传入单个数值或数组。传入数组时，可按顺时针方向分别指定四个角的半径。
+
+例如：
+```ts
 ${propName|default('borderRadius')}: 5, // 统一设置四个角的圆角大小
-${propName|default('borderRadius')}: [5, 5, 0, 0] //（顺时针左上，右上，右下，左下）
+${propName|default('borderRadius')}: [5, 5, 0, 0] // 顺时针方向：[左上, 右上, 右下, 左下]
 ```
 

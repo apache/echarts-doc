@@ -58,11 +58,11 @@ Border width of ${componentName}.
 
 <ExampleUIControlVector min="0" dims="LT,RT,RB,LB"  />
 
-The radius of rounded corner. Its unit is px. And it supports use array to respectively specify the 4 corner radiuses.
+The radius of the rounded corners, specified in pixels (px). Supports an array to define each of the four corners individually.
 
 For example:
-```
-${propName|default('borderRadius')}: 5, // consistently set the size of 4 rounded corners
-${propName|default('borderRadius')}: [5, 5, 0, 0] // (clockwise upper left, upper right, bottom right and bottom left)
+```ts
+${propName|default('borderRadius')}: 5, // Applies to all four corners
+${propName|default('borderRadius')}: [5, 5, 0, 0] // Clockwise from top-left: [top-left, top-right, bottom-right, bottom-left]
 ```
 

@@ -106,6 +106,31 @@ Whether to show toolbox component.
 
 Background color of toolbox component.
 
+## padding(number|Array) = 15
+
+{{ use: partial-padding(
+    componentName = "toolbox",
+    defaultPadding: 15
+) }}
+
+<ExampleUIControlVector dims="T,R,B,L" default="15,15,15,15"  min="0" step="0.5" />
+
+## borderColor(Color) = '#b7b9be'
+
+<ExampleUIControlColor default="#b7b9be" />
+
+The border color of the toolbox component.
+
+## borderWidth(number) = 0
+
+<ExampleUIControlNumber default="0" min="0" step="0.5" />
+
+The border width in pixel (`px`) of the toolbox component.
+
+{{ use: partial-border-radius(
+    prefix = "#"
+) }}
+
 ## orient(string) = 'horizontal'
 
 <ExampleUIControlEnum options="vertical,horizontal" />

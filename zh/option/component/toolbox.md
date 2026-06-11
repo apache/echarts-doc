@@ -180,6 +180,31 @@ option = {
 
 工具栏组件的背景色。
 
+## padding(number|Array) = 15
+
+{{ use: partial-padding(
+    componentName = "toolbox",
+    defaultPadding: 15
+) }}
+
+<ExampleUIControlVector dims="T,R,B,L" default="15,15,15,15"  min="0" step="0.5" />
+
+## borderColor(Color) = '#b7b9be'
+
+<ExampleUIControlColor default="#b7b9be" />
+
+工具栏组件的边框颜色。
+
+## borderWidth(number) = 0
+
+<ExampleUIControlNumber default="0" min="0" step="0.5" />
+
+工具栏组件的边框线宽，单位为像素 (`px`)。
+
+{{ use: partial-border-radius(
+    prefix = "#"
+) }}
+
 ## orient(string) = 'horizontal'
 
 <ExampleUIControlEnum options="vertical,horizontal" />

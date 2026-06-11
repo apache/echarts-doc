@@ -3,19 +3,19 @@
 
 <ExampleUIControlVector min="0" dims="T,R,B,L"  />
 
-${componentName} space around content. The unit is px. Default values for each position are 5. And they can be set to different values with left, right, top, and bottom.
+The spacing around the ${componentName} content, specified in pixels (`px`). The default value for each side is `${defaultPadding|default(5)}`. Supports a single value, a 2-value array, or a 4-value array to configure each side.
 
 Examples:
 ```ts
-// Set padding to be 5
+// Applies to all four sides
 padding: 5
-// Set the top and bottom paddings to be 5, and left and right paddings to be 10
+// [vertical, horizontal] -> top/bottom: 5, left/right: 10
 padding: [5, 10]
-// Set each of the four paddings separately
+// Clockwise order: [top, right, bottom, left]
 padding: [
-    5,  // up
+    5,  // top
     10, // right
-    5,  // down
+    5,  // bottom
     10, // left
 ]
 ```
