@@ -191,7 +191,9 @@ const option = {
     prefix = "##",
     position = true,
     formatter = true,
-    labelMargin = true
+    labelMargin = true,
+    defaultShowLabel = true,
+    silent = true
 ) }}
 
 ### alignTo(string) = 'none'
@@ -506,8 +508,14 @@ const option = {
 
 {{ target: partial-pie-label }}
 
-#${prefix} show(boolean) = false
+#${prefix} show(boolean) = ${defaultShowLabel|default("false")}
 
+{{ if: ${silent} }}
+#${prefix} silent(boolean) = false
+
+是否忽略鼠标事件。默认值为 `false`，即响应和触发鼠标事件。
+
+{{ /if }}
 {{ if: ${position} }}
 #${prefix} position(string) = 'outside'
 
@@ -596,4 +604,3 @@ const option = {
     prefix = "#" + ${prefix},
     type = "饼图"
 ) }}
-

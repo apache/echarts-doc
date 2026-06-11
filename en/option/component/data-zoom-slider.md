@@ -225,10 +225,13 @@ Whether to update view while dragging. If it is set as `false`, the view will be
 
 ## textStyle(*)
 
-{{ use: partial-simple-text-style(
+{{ use: partial-text-style(
     prefix = '##',
     name = 'dataZoom ',
-    defaultColor = '#333'
+    defaultColor = '#333',
+    noAlign = true,
+    noVerticalAlign = true,
+    noRich = true
 ) }}
 
 {{ use: partial-data-zoom-common(
@@ -321,4 +324,3 @@ Whether to show the label.
 {{ use: partial-item-style(
     prefix = "###"
 ) }}
-

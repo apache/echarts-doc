@@ -185,6 +185,10 @@ option = {
     prefix = "#"
 ) }}
 
+{{ use: partial-series-dimensions(
+    prefix = "#"
+) }}
+
 {{ use: partial-seriesLayoutBy() }}
 
 {{ use: partial-datasetIndex() }}
@@ -291,4 +295,3 @@ option = {
 {{ use: partial-universal-transition(
     prefix = "#"
 ) }}
-

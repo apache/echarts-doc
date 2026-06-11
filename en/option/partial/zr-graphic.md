@@ -316,6 +316,10 @@ When [overflow](~${optionPath}.${hostName}${symbolVisit}text.style.overflow) is 
 
 Text vertical alignment. Optional values: `'top'`, `'middle'`, `'bottom'`.
 
+###${prefix} rich(Object)
+
+Rich text styles. The key is the style name, and the value is the style definition for that rich text fragment.
+
 {{ use: partial-graphic-cpt-style-prop-common(
     prefix = ${prefix},
     optionPath = ${optionPath},
@@ -2193,4 +2197,3 @@ Although the points will be interpolated, the consequent animation will be like 
 ```
 
 See this example [example](${galleryEditorPath}custom-spiral-race&edit=1&reset=1).
-

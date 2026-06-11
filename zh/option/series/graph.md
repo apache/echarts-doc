@@ -587,6 +587,8 @@ links: [{
     state = 'select'
 ) }}
 
+{{ use: partial-tooltip-in-series-data() }}
+
 ### symbol(Array|string)
 
 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。

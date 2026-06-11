@@ -193,6 +193,23 @@ It is valid when [axisPointer.type](~tooltip.axisPointer.type) is `'cross'`.
 
 {{ target: partial-tooltip-common }}
 
+{{ if: ${scope} === 'series' || ${scope} === 'seriesData' }}
+#${prefix} show(boolean) = true
+
+Whether to show the tooltip.
+
+{{ /if }}
+{{ if: ${scope} === 'series' }}
+#${prefix} trigger(string|boolean) = 'item'
+
+Override the tooltip trigger type for this series.
+
+Options:
++ `'item'`
++ `'axis'`
++ `'none'` or `false`: Do not trigger tooltip in this series.
+
+{{ /if }}
 #${prefix} position(string|Array)
 
 {{ use: partial-tooltip-scope-tip(

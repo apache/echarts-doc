@@ -168,7 +168,9 @@ Style of circle placeholder.
     prefix = "##",
     position = true,
     formatter = true,
-    labelMargin = true
+    labelMargin = true,
+    defaultShowLabel = true,
+    silent = true
 ) }}
 
 ### alignTo(string) = 'none'
@@ -483,8 +485,14 @@ Animation type when data updates.
 
 {{ target: partial-pie-label }}
 
-#${prefix} show(boolean) = false
+#${prefix} show(boolean) = ${defaultShowLabel|default("false")}
 
+{{ if: ${silent} }}
+#${prefix} silent(boolean) = false
+
+Whether to ignore mouse events. Default value is `false`, for triggering and responding to mouse events.
+
+{{ /if }}
 {{ if: ${position} }}
 #${prefix} position(string) = 'outside'
 
@@ -573,4 +581,3 @@ Label rotation.
     prefix = "#" + ${prefix},
     type = "pie"
 ) }}
-

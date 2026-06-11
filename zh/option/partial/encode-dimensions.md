@@ -95,8 +95,6 @@ encode: {
 
 这是个更丰富的 `encode` 的[示例](${galleryViewPath}dataset-encode1&edit=1&reset=1)：
 
-
-
 特殊地，在 [自定义系列（custom series）](~series-custom) 中，`encode` 中轴可以不指定或设置为 `null/undefined`，从而使系列免于受这个轴控制，也就是说，轴的范围（extent）不会受此系列数值的影响，轴被 [dataZoom](~dataZoom) 控制时也不会过滤掉这个系列：
 
 ```ts
@@ -133,6 +131,14 @@ var option = {
     }
 };
 ```
+
+##${prefix} label(string|number|Array)
+
+指定默认标签内容使用的维度。
+
+##${prefix} itemName(string|number|Array)
+
+指定作为数据项名称的维度。该名称会用于默认标签和提示框。对于饼图、漏斗图等图例项表示数据项的系列，该名称也会作为图例项名称。
 
 
 
@@ -192,4 +198,3 @@ series: {
     + displayName: 一般用于 tooltip 中维度名的展示。`string` 如果没有指定，默认使用 name 来展示。
 
 值得一提的是，当定义了 `dimensions` 后，默认 `tooltip` 中对个维度的显示，会变为『竖排』，从而方便显示每个维度的名称。如果没有定义 `dimensions`，则默认 `tooltip` 会横排显示，且只显示数值没有维度名称可显示。
-

@@ -100,6 +100,12 @@ A group of utility tools, which includes [export](~toolbox.feature.saveAsImage),
 
 Whether to show toolbox component.
 
+## backgroundColor(Color) = 'transparent'
+
+<ExampleUIControlColor default="transparent" />
+
+Background color of toolbox component.
+
 ## orient(string) = 'horizontal'
 
 <ExampleUIControlEnum options="vertical,horizontal" />
@@ -559,4 +565,3 @@ option = {
     ...
 }
 ```
-
