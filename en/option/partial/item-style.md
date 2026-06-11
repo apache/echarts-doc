@@ -27,13 +27,13 @@ ${colorExtraInfo}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor|default("'#000'")}
 
-<ExampleUIControlColor />
+<ExampleUIControlColor default="${defaultBorderColor|default("'#000'")}" />
 
 ${name} border color, whose format is similar to that of `color`.
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth|default(0)}
 
-<ExampleUIControlNumber value="${defaultBorderWidth|default(0)}" min="0" step="0.5" />
+<ExampleUIControlNumber default="${defaultBorderWidth|default(0)}" min="0" step="0.5" />
 
 ${name} border width. No border when it is set to be 0.
 

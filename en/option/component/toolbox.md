@@ -6,7 +6,7 @@
 The style setting of ${name} icon. Since icon label is displayed only when hovering on the icon, the label configuration options are available under `emphasis`.
 
 {{ use: partial-item-style(
-    defaultBorderColor = '#666',
+    defaultBorderColor = '#6578ba',
     defaultColor = 'none',
     defaultBorderWidth = 1,
     prefix = "#" + ${prefix}
@@ -17,7 +17,10 @@ The style setting of ${name} icon. Since icon label is displayed only when hover
 ##${prefix} iconStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "##" + ${prefix}
+    prefix = "##" + ${prefix},
+    defaultBorderColor = '#404c76',
+    defaultColor = 'none',
+    defaultBorderWidth = 1
 ) }}
 
 ###${prefix} textPosition(string) = 'bottom'
@@ -147,9 +150,9 @@ Options:
 
 The size of toolbox's icon.
 
-## itemGap(number) = 8
+## itemGap(number) = 10
 
-<ExampleUIControlNumber min="0" default="8" />
+<ExampleUIControlNumber min="0" default="10" />
 
 The gap between each icon of toolbox. It is horizontal gap in horizontal layout, while vertical gap in vertical layout.
 

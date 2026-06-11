@@ -6,7 +6,7 @@
 ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候才显示，所以文字相关的配置项请在 `emphasis` 下设置。
 
 {{ use: partial-item-style(
-    defaultBorderColor = '#666',
+    defaultBorderColor = '#6578ba',
     defaultColor = 'none',
     defaultBorderWidth = 1,
     prefix = "#" + ${prefix}
@@ -17,7 +17,10 @@ ${name} icon 样式设置。由于 icon 的文本信息只在 icon hover 时候�
 ##${prefix} iconStyle(Object)
 
 {{ use: partial-item-style(
-    prefix = "##" + ${prefix}
+    prefix = "##" + ${prefix},
+    defaultBorderColor = '#404c76',
+    defaultColor = 'none',
+    defaultBorderWidth = 1
 ) }}
 
 ###${prefix} textPosition(string) = 'bottom'
@@ -221,9 +224,9 @@ option = {
 
 工具栏 icon 的大小。
 
-## itemGap(number) = 8
+## itemGap(number) = 10
 
-<ExampleUIControlNumber min="0" default="8" />
+<ExampleUIControlNumber min="0" default="10" />
 
 工具栏 icon 每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
 

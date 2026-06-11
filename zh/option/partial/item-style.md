@@ -27,13 +27,13 @@ ${colorExtraInfo}
 
 #${prefix} borderColor(Color) = ${defaultBorderColor|default("'#000'")}
 
-<ExampleUIControlColor />
+<ExampleUIControlColor default="${defaultBorderColor|default("'#000'")}" />
 
 ${name}图形的描边颜色。支持的颜色格式同 `color`，不支持回调函数。
 
 #${prefix} borderWidth(number) = ${defaultBorderWidth|default(0)}
 
-<ExampleUIControlNumber value="${defaultBorderWidth|default(0)}" min="0" step="0.5" />
+<ExampleUIControlNumber default="${defaultBorderWidth|default(0)}" min="0" step="0.5" />
 
 ${defaultBorderWidthDesc|default((${name} ? ${name} : "") + "描边线宽。为 0 时无描边。")}
 
