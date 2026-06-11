@@ -210,7 +210,7 @@ option = {
 
 ## orient(string) = 'horizontal'
 
-<ExampleUIControlEnum options="vertical,horizontal" />
+<ExampleUIControlEnum options="vertical,horizontal" default="horizontal" />
 
 工具栏 icon 的布局朝向。
 

@@ -136,7 +136,7 @@ The border width in pixel (`px`) of the toolbox component.
 
 ## orient(string) = 'horizontal'
 
-<ExampleUIControlEnum options="vertical,horizontal" />
+<ExampleUIControlEnum options="vertical,horizontal" default="horizontal" />
 
 The layout orientation of toolbox's icon.
 
