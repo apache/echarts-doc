@@ -19,8 +19,16 @@ module.exports = (env, argv) => {
         output: {
             filename: 'doc-bundle.js',
             path: path.resolve(__dirname, '../public/js'),
-            library: 'echartsDoc',
-            libraryTarget: 'umd'
+            library: {
+                name: 'echartsDoc',
+                type: 'umd'
+            },
+            clean: false
+        },
+        resolve: {
+            fallback: {
+                fs: false
+            }
         },
         stats: 'minimal',
         module: {
@@ -61,9 +69,6 @@ module.exports = (env, argv) => {
                     EMBEDDED_ECHARTS_SCRIPT_URL: configEnv.EMBEDDED_ECHARTS_SCRIPT_URL,
                 })
             }),
-            new webpack.IgnorePlugin({
-                resourceRegExp: /^fs$/
-            }),
             new VueLoaderPlugin(),
             new MiniCssExtractPlugin({
                 filename: '../css/doc-bundle.css'
@@ -71,4 +76,3 @@ module.exports = (env, argv) => {
         ]
     };
 };
-

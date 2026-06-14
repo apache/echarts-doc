@@ -10,8 +10,8 @@
     "build": "node build/build-doc.js --env asf",
     "watch": "node build/build-doc.js --env dev --watch",
     "localsite": "node build/build-doc.js --env localsite",
-    "build:site": "webpack --config build/webpack.config.js --mode production",
-    "watch:site": "webpack --config build/webpack.config.js --mode development --devtool inline-source-map --watch",
+    "build:site": "webpack --config build/webpack.config.js --config-node-env production",
+    "watch:site": "webpack --config build/webpack.config.js --config-node-env development --devtool inline-source-map --watch",
     "server": "node server.js",
     "format": "node tool/format.js",
     "dev": "npx concurrently --kill-others \"npm:watch\" \"npm:watch:site\" \"npm:server\""
@@ -40,8 +40,8 @@
     "sassjs-loader": "^2.0.0",
     "vue-loader": "^15.9.2",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^5.101.0",
-    "webpack-cli": "^4.10.0",
+    "webpack": "^5.107.2",
+    "webpack-cli": "^7.0.3",
     "yargs": "^14.2.3"
   },
   "dependencies": {
