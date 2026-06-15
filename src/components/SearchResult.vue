@@ -129,7 +129,6 @@ export default {
 
 
 <style lang="scss">
-
 .doc-search-result {
     h3 {
         font-weight: normal;

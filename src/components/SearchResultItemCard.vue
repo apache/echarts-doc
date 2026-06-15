@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../style/mixin.scss";
+@use "../style/mixin";
 
 .doc-search-result-item-card {
     margin: 30px 10px;
@@ -119,7 +119,7 @@ export default {
         // position: relative;
     }
 
-    @include description-html-formatter;
+    @include mixin.description-html-formatter;
 
     // Not dispay iframe, code, image
     iframe, pre, image {

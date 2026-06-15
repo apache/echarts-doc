@@ -218,7 +218,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+@use "sass:color";
 $card-margin: 10px;
 $children-padding: 10px;
 
@@ -264,7 +264,7 @@ $hierarchy-guider-color: #E0E6F1;
         .expand-toggle {
             font-size: 18px;
             margin-left: -23px;
-            color: darken($hierarchy-guider-color, 20%);
+            color: color.scale($hierarchy-guider-color, $lightness: -20%);
             cursor: pointer;
             position: relative;
             background-color: #fff;

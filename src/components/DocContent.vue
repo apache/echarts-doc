@@ -299,8 +299,7 @@ export default {
 
 
 <style lang="scss">
-
-@import "../style/mixin.scss";
+@use "../style/mixin";
 
 .doc-main {
     position: static!important;
@@ -374,7 +373,7 @@ export default {
         padding: 5px 0;
         margin-left: 15px;
 
-        @include description-html-formatter;
+        @include mixin.description-html-formatter;
     }
 
     .item-description {
@@ -390,7 +389,7 @@ export default {
             font-size: 14px;
         }
 
-        @include description-html-formatter;
+        @include mixin.description-html-formatter;
     }
 
     table {

@@ -44,7 +44,7 @@ module.exports = (env, argv) => {
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
             }, {
                 test: /\.scss$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sassjs-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             }, {
                 test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
                 use: [{

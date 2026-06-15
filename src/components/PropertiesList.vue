@@ -56,8 +56,7 @@ export default {
 </script>
 
 <style lang="scss">
-
-@import "../style/mixin.scss";
+@use "../style/mixin";
 
 .properties-list-panel {
     h5 {
@@ -83,7 +82,7 @@ export default {
     overflow-y: auto;
     overflow-x: auto;
 
-    @include description-html-formatter;
+    @include mixin.description-html-formatter;
 
     pre {
         font-size: 12px
@@ -107,5 +106,4 @@ export default {
         font-size: 12px
     }
 }
-
 </style>
