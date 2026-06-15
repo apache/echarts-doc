@@ -47,14 +47,15 @@ module.exports = (env, argv) => {
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             }, {
                 test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
-                use: [{
-                    loader: 'file-loader',
-                    options: {
-                        limit: 10000,
-                        outputPath: '../css',
-                        name: '[name].[ext]'
+                type: 'asset',
+                parser: {
+                    dataUrlCondition: {
+                        maxSize: 10000
                     }
-                }]
+                },
+                generator: {
+                    filename: '../css/[name][ext]'
+                }
             }]
         },
         externals: {

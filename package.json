@@ -27,7 +27,6 @@
     "copy-dir": "^0.3.0",
     "cross-env": "^7.0.3",
     "css-loader": "^7.1.4",
-    "file-loader": "^6.2.0",
     "fs-extra": "^8.1.0",
     "globby": "^11.0.1",
     "htmlparser2": "^4.1.0",
