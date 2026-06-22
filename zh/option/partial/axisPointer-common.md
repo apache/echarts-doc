@@ -111,6 +111,20 @@ axisPointer 的 label 默认不显示（也就是默认只显示指示线），�
 
 是否触发 tooltip。如果不想触发 tooltip 可以关掉。
 
+#${prefix} triggerOnNoData(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+{{ use: partial-version(
+    version = "6.2.0"
+) }}
+
+当指示位置没有数据时，是否仍然显示坐标轴指示器。
+
+该配置主要用于通过 [echarts.connect](api.html#echarts.connect) 关联的图表。当鼠标悬浮在某个图表上、而另一个关联图表在该位置没有数据时，那个图表的坐标轴指示器原本会被隐藏；开启该配置后，它会继续显示在关联的轴值处。
+
+注意，坐标轴本身仍然需要有确定的范围（例如固定的 `min`/`max`），这样在没有数据的位置才有对应的轴值。
+
 #${prefix} value(number) = null
 
 当前的 value。在使用 [axisPointer.handle](xAxisPointer.handle) 时，可以设置此值进行初始值设定，从而决定 axisPointer 的初始位置。
