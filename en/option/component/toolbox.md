@@ -168,7 +168,12 @@ The configuration item for each tool.
 
 Besides the tools we provide, user-defined toolbox is also supported.
 
-Notes: User-defined tool name could only start with `my`, like `myTool1` and `myTool2` in the below example:
+Notes: A user-defined tool configured only through chart options must start with
+`my`, like `myTool1` and `myTool2` in the example below. An extension package
+can register a named feature through `registerToolboxFeature`; registered
+features do not need the `my` prefix. Registration does not add the feature to
+every chart. The button is created only when the feature is explicitly listed
+here, and its `show` option controls whether it is displayed for that chart.
 
 ```javascript
 {

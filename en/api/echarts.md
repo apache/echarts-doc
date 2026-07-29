@@ -133,6 +133,63 @@ echarts.use(
 
 See [Use ECharts with bundler and NPM](${handbookPath}basics/import) for more detailed explanation.
 
+### Registering toolbox features from extension packages
+
+An extension installer can register a first-class toolbox feature with
+`registerToolboxFeature`. The feature class and its public types are exported
+from `echarts/core`.
+
+```ts
+import * as echarts from 'echarts/core';
+import {
+    EChartsExtensionInstaller,
+    ToolboxFeature,
+    ToolboxFeatureOption
+} from 'echarts/core';
+
+interface ExportDataFeatureOption extends ToolboxFeatureOption {
+    filename?: string;
+}
+
+class ExportDataFeature extends ToolboxFeature<ExportDataFeatureOption> {
+    onclick(): void {
+        const filename = this.model.get('filename');
+        // Call the extension package's exporter here.
+        console.log(filename);
+    }
+
+    static defaultOption: ExportDataFeatureOption = {
+        show: true,
+        title: 'Export data',
+        icon: 'path://M6 2h8l4 4v16H6V2zm7 1.5V7h3.5L13 3.5z',
+        filename: 'chart-data'
+    };
+}
+
+const installExportData: EChartsExtensionInstaller = (registers) => {
+    registers.registerToolboxFeature('exportData', ExportDataFeature);
+};
+
+echarts.use(installExportData);
+```
+
+Registering a feature only makes it available; it does not add a button to
+every chart. Each chart must explicitly configure the feature. Use `show` to
+control its availability for that chart, including when permissions change:
+
+```ts
+chart.setOption({
+    toolbox: {
+        feature: {
+            exportData: {
+                show: canExport,
+                filename: 'sales'
+            }
+        }
+    }
+});
+```
+
 ## registerMap(Function)
 
 ```ts
