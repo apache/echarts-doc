@@ -150,7 +150,23 @@ The separate hover layer is used to avoid re-painting the whole canvas when hove
 
 ECharts 2 use separate layer for all cases. But it brings some problems like the hovered elements may not covering everything else correctly, or translucent elements may not overlay correctly to each other. And it brings extra member cost due to the extra canvas and may bring burden on mobile devices. So since ECharts 3, the hover layer is not used by default. Only when the element amount is large enough will the hover layer used.
 
+# timeZone(string)
+
+{{ use: partial-version(version = "6.2.0") }}
+
+The [IANA time zone](https://www.iana.org/time-zones) used to calculate and display temporal values. For example, `'America/New_York'`, `'Asia/Shanghai'`, or `'UTC'`.
+
+When this option is not specified, ECharts uses the current browser or operating-system time zone.
+
+This option determines time-axis ticks, `axisLabel`, and `tooltip` formatting. A `timeZone` configured on a time axis overrides this global value for that axis.
+
+If `timeZone` and the deprecated [useUTC](~useUTC) are both specified, `timeZone` takes precedence.
+
+This setting affects time calculation and display, but does not change how input values are parsed. Strings without an explicit offset are still parsed in the current system time zone. Use a timestamp, a `Date`, or a string with an explicit offset when the input must identify the same instant in every environment. See [the time part in date](~series-line.data).
+
 # useUTC(boolean) = false
+
+{{ use: partial-version(version = "6.2.0", deprecated = 'Use [timeZone](~timeZone) instead.') }}
 
 Whether to use UTC in display.
 
@@ -170,6 +186,8 @@ Notice: if you set `useUTC: true` and use the helper method `echarts.time.format
 // The third param `true` indicates that format time based on UTC.
 const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
 ```
+
+This option is retained for backward compatibility. `useUTC: true` is equivalent to `timeZone: 'UTC'`, while `useUTC: false` is equivalent to leaving `timeZone` unspecified and using the current browser or operating-system time zone. If `timeZone` is also specified, `timeZone` takes precedence.
 
 {{import: partial-rich-inherit-plain-label}}
 

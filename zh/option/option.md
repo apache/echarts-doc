@@ -150,7 +150,23 @@
 ECharts 2 里是底层强制使用单独的层绘制高亮图形，但是会带来很多问题，比如高亮的图形可能会不正确的遮挡所有其它图形，还有图形有透明度因为高亮和正常图形叠加导致不正确的透明度显示，还有移动端上因为每个图表都要多一个 canvas 带来的额外内存开销。因此 3 里默认不会开启该优化，只有在图形数量特别多，有必要做该优化时才会自动开启。
 
 
+# timeZone(string)
+
+{{ use: partial-version(version = "6.2.0") }}
+
+用于计算和显示时间值的 [IANA 时区](https://www.iana.org/time-zones)，例如 `'America/New_York'`、`'Asia/Shanghai'` 或 `'UTC'`。
+
+未指定此选项时，ECharts 使用当前浏览器或操作系统的时区。
+
+此选项决定时间轴刻度、`axisLabel` 和 `tooltip` 的格式。时间轴上配置的 `timeZone` 会覆盖此全局值。
+
+如果同时指定 `timeZone` 和已废弃的 [useUTC](~useUTC)，以 `timeZone` 为准。
+
+此设置影响时间的计算和显示，但不会改变输入值的解析方式。没有显式偏移量的字符串仍按照当前系统时区解析。如果输入必须在所有环境中表示同一时刻，请使用时间戳、`Date` 或带有显式偏移量的字符串。参见 [date 中时间相关部分](~series-line.data)。
+
 # useUTC(boolean) = false
+
+{{ use: partial-version(version = "6.2.0", deprecated = '请改用 [timeZone](~timeZone)。') }}
 
 是否使用 UTC 时间。
 
@@ -170,6 +186,8 @@ ECharts 2 里是底层强制使用单独的层绘制高亮图形，但是会带�
 // 第三个参数 `true` 表示，按照 UTC 来解释时间。
 const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
 ```
+
+保留此选项是为了向后兼容。`useUTC: true` 等同于 `timeZone: 'UTC'`，而 `useUTC: false` 等同于不指定 `timeZone`，即使用当前浏览器或操作系统的时区。如果同时指定 `timeZone`，以 `timeZone` 为准。
 
 
 {{import: partial-rich-inherit-plain-label }}

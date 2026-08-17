@@ -819,6 +819,21 @@ Option:
     componentType = ${componentType}
 ) }}
 
+#${prefix} timeZone(string)
+
+{{ use: partial-version(version = "6.2.0") }}
+
+The [IANA time zone](https://www.iana.org/time-zones) used to align ticks and format labels on this axis. It is available only when [type](~${componentType}.type) is `'time'`.
+
+For example:
+```ts
+timeZone: 'America/New_York'
+```
+
+If this option is not specified, the axis inherits the [global timeZone](${optionDocPath}#timeZone). An axis-level `timeZone` takes precedence over the global value. This effective time zone is also used for temporal values from this axis displayed in `tooltip`.
+
+This option does not change how input values are parsed. To identify an instant independently of the current system time zone, use a timestamp, a `Date`, or a string with an explicit offset.
+
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
 
@@ -1318,8 +1333,15 @@ Using string templates is an easy way to format date/time with frequently used f
 |              | {s}        | 0-59                                                                           | 0-59                                                                        |
 | Millisecond  | {SSS}      | 000-999                                                                        | 000-999                                                                     |
 |              | {S}        | 0-999                                                                          | 0-999                                                                       |
+| UTC Offset   | {Z}        | `Z`, `-5`, `-3:30`, `+1:05`                                                    | `Z`, `-5`, `-3:30`, `+1:05`                                                |
+|              | {ZZ}       | `Z`, `-05:00`, `-03:30`, `+01:05`                                             | `Z`, `-05:00`, `-03:30`, `+01:05`                                         |
 | Meridian     | {A}        | AM, PM (Since `v5.5.1`, i18n will be finished in the next version)             | 上午、下午 (`v5.5.1` 仅支持英文，将在下个版本支持中文及其他语言)            |
 |              | {a}        | am, pm                                                                         | 上午、下午                                                                  |
+
+{{ use: partial-version(
+    feature = '`{Z}` and `{ZZ}` UTC-offset templates are available',
+    version = "6.2.0"
+) }}
 
 > Templates of other languages can be found in [the language package](https://github.com/apache/echarts/tree/master/src/i18n). Please refer to [echarts.registerLocale](api.html#echarts.registerLocale) to register a language.
 
@@ -1355,6 +1377,25 @@ formatter: function (value, index) {
     // Notice, if using UTC, ${optionDocPath}#useUTC need to be also set as `true`
     // for consistency.
     return timeStrLocal;
+}
+```
+
+{{ use: partial-version(
+    version = "6.2.0",
+    deprecated = 'Pass a time-zone string as the third parameter of `echarts.time.format` instead of a boolean.'
+) }}
+
+Since `v6.2.0`, the third parameter of `echarts.time.format` accepts an IANA time-zone string or `'UTC'`:
+
+```ts
+formatter: function (value, index) {
+    // Follow the template rules above.
+    const timeZone = 'America/New_York';
+    return echarts.time.format(
+        value,
+        '{yyyy}-{MM}-{dd} {HH}:{mm}:{ss} {ZZ}',
+        timeZone
+    );
 }
 ```
 
@@ -1494,4 +1535,3 @@ Whether to show the tooltip. Defaults to `false`.
 {{ target: partial-axis-break-identifier-desc }}
 
 Note: [${componentType}.breaks.start](~${componentType}.breaks.start) and [${componentType}.breaks.end](~${componentType}.breaks.end) are the unique identifiers for each break item. When calling [chart.setOption](api.html#echartsInstance.setOption) to modify [${componentType}.breaks.gap](~${componentType}.breaks.gap) or [${componentType}.breaks.isExpanded](~${componentType}.breaks.isExpanded), `start` and `end` must be specified. Update animations will only occur if `start` and `end` are not modified; no animation will occur if they are changed.
-

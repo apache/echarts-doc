@@ -817,6 +817,21 @@ splitLine: {
     componentType = ${componentType}
 ) }}
 
+#${prefix} timeZone(string)
+
+{{ use: partial-version(version = "6.2.0") }}
+
+用于对齐此坐标轴刻度和格式化标签的 [IANA 时区](https://www.iana.org/time-zones)。仅当 [type](~${componentType}.type) 为 `'time'` 时有效。
+
+例如：
+```ts
+timeZone: 'America/New_York'
+```
+
+未指定此选项时，坐标轴继承[全局 timeZone](${optionDocPath}#timeZone)。坐标轴级的 `timeZone` 优先于全局值。`tooltip` 中来自此坐标轴的时间值也使用这个有效时区。
+
+此选项不会改变输入值的解析方式。如果需要表示不受当前系统时区影响的确定时刻，请使用时间戳、`Date` 或带有显式偏移量的字符串。
+
 {{ if: ${componentType} !== 'angleAxis' }}
 #${prefix} name(string)
 
@@ -1312,6 +1327,13 @@ formatter = function (value, index, extra: AxisLabelFormatterExtraBreakPart) {
 |              | {s}        | 0-59                                                           | 0-59                                                                       |
 | Millisecond  | {SSS}      | 000-999                                                        | 000-999                                                                    |
 |              | {S}        | 0-999                                                          | 0-999                                                                      |
+| UTC Offset   | {Z}        | `Z`、`-5`、`-3:30`、`+1:05`                                  | `Z`、`-5`、`-3:30`、`+1:05`                                              |
+|              | {ZZ}       | `Z`、`-05:00`、`-03:30`、`+01:05`                            | `Z`、`-05:00`、`-03:30`、`+01:05`                                        |
+
+{{ use: partial-version(
+    feature = '支持 `{Z}` 和 `{ZZ}` UTC 偏移量模板',
+    version = "6.2.0"
+) }}
 
 > 其他语言请参考相应[语言包](https://github.com/apache/echarts/tree/master/src/i18n)中的定义，语言包可以通过 [echarts.registerLocale](api.html#echarts.registerLocale) 注册。
 
@@ -1346,6 +1368,25 @@ formatter: function (value, index) {
     const timeStrUTC = echarts.time.format(value, '{yyyy}-{MM}-{dd} {hh}:{mm}:{ss}', true);
     // 注意：如果使用 UTC，${optionDocPath}#useUTC 也要设置为 `true`，保持一致。
     return timeStrLocal;
+}
+```
+
+{{ use: partial-version(
+    version = "6.2.0",
+    deprecated = '请使用时区字符串作为 `echarts.time.format` 的第三个参数，不要再使用布尔值。'
+) }}
+
+从 `v6.2.0` 开始，`echarts.time.format` 的第三个参数接受 IANA 时区字符串或 `'UTC'`：
+
+```ts
+formatter: function (value, index) {
+    // 时间模版的规则如上描述。
+    const timeZone = 'America/New_York';
+    return echarts.time.format(
+        value,
+        '{yyyy}-{MM}-{dd} {HH}:{mm}:{ss} {ZZ}',
+        timeZone
+    );
 }
 ```
 

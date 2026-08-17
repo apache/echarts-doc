@@ -354,4 +354,6 @@ Sets the platform-related API, which may need to be provided when non-browser pl
 + `loadImage` Load image, required when using Canvas rendering mode and using URLs as images.
 
 
+{{ use: echarts-time }}
+
 {{ use: echarts-graphic }}
