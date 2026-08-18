@@ -40,7 +40,7 @@ Formats a temporal value in an [IANA time zone](https://www.iana.org/time-zones)
     version = "6.2.0"
 ) }}
 
-The supported templates are listed in [time axisLabel.formatter](option.html#xAxis.axisLabel.formatter). Since `v6.2.0`, `{Z}` formats the UTC offset without a padded hour (for example, `Z`, `-5`, or `+1:05`) and `{ZZ}` formats it with a padded hour (for example, `Z`, `-05:00`, or `+01:05`).
+The supported templates are listed in [time axisLabel.formatter](option.html#xAxis.axisLabel.formatter). Since `v6.2.0`, `{Z}` formats the UTC offset without a padded hour (for example, `Z`, `+0`, `-5`, or `+1:05`) and `{ZZ}` formats it with a padded hour (for example, `Z`, `+00:00`, `-05:00`, or `+01:05`).
 
 Example:
 

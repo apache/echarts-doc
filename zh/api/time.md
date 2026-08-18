@@ -40,7 +40,7 @@
     version = "6.2.0"
 ) }}
 
-支持的模板参见[时间轴 axisLabel.formatter](option.html#xAxis.axisLabel.formatter)。从 `v6.2.0` 开始，`{Z}` 生成小时不补零的 UTC 偏移量（例如 `Z`、`-5` 或 `+1:05`），`{ZZ}` 生成小时补零的 UTC 偏移量（例如 `Z`、`-05:00` 或 `+01:05`）。
+支持的模板参见[时间轴 axisLabel.formatter](option.html#xAxis.axisLabel.formatter)。从 `v6.2.0` 开始，`{Z}` 生成小时不补零的 UTC 偏移量（例如 `Z`、`+0`、`-5` 或 `+1:05`），`{ZZ}` 生成小时补零的 UTC 偏移量（例如 `Z`、`+00:00`、`-05:00` 或 `+01:05`）。
 
 示例：
 
