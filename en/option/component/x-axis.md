@@ -47,6 +47,18 @@ Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 Offset of x axis relative to default position. Useful when multiple x axis has same [position](~xAxis.position) value.
 Notice: Set `xAxis.axisLine.onZero` to `false` to activate this option.
 
+## includeMarkerInExtent(boolean) = false
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(version = "6.0.1") }}
+
+Whether to include markers (markPoint, markLine, markArea) in the default axis extent calculation.
+
+When set to `true`, the axis extent calculation will consider the positions of markers, ensuring that markers are visible within the axis range. By default or when set to `false`, marker values are not considered when calculating the default axis range.
+This setting only takes effect for non-category axes.
+
+
 {{ use: axis-common(
     prefix = '#',
     componentType = 'xAxis',

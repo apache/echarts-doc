@@ -82,6 +82,17 @@ x 轴的位置。
 
 X 轴相对于默认位置的偏移，在相同的 `position` 上有多个 X 轴的时候有用。注：若未将 `xAxis.axisLine.onZero` 设为 `false` , 则该项无法生效。
 
+## includeMarkerInExtent(boolean) = false
+
+<ExampleUIControlBoolean />
+
+{{ use: partial-version(version = "6.0.1") }}
+
+是否在坐标轴默认范围计算时包含标记（markPoint、markLine、markArea）。
+
+设置为 `true` 时坐标轴的范围计算会考虑标记的位置，确保标记在坐标轴范围内可见。默认条件下或当设置 `false`时，计算默认轴范围时则不考虑标记的数值。
+该配置仅对非类目轴生效。
+
 {{ use: axis-common(
     prefix = '#',
     componentType = 'xAxis',
