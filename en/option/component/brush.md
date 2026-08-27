@@ -11,7 +11,7 @@
 
 **Brush type and triggering button**
 
-Currently, supported `brush` types include: `scatter`, `bar`, `candlestick`. (Note that `parallel` contains brush function by itself, which is not provided by brush component.)
+Currently, supported `brush` types include: `line`, `scatter`, `bar`, `candlestick`. (Note that `parallel` contains brush function by itself, which is not provided by brush component.)
 
 Click the button in `toolbox` to enable operations like *area selecting*, or *canceling selecting*.
 
