@@ -116,6 +116,20 @@ Whether to trigger emphasis of series.
 
 Whether to trigger tooltip.
 
+#${prefix} triggerOnNoData(boolean) = false
+
+<ExampleUIControlBoolean default="false" />
+
+{{ use: partial-version(
+    version = "6.2.0"
+) }}
+
+Whether to keep the axis pointer shown when there is no data at the pointed position.
+
+This is mainly useful for charts linked by [echarts.connect](api.html#echarts.connect). When you hover over one chart at a position where another linked chart has no data, that chart's axis pointer would normally be hidden; with this turned on it stays visible at the linked axis value instead.
+
+Note that the axis still needs a determined range (for example a fixed `min`/`max`), so that a value exists at positions without data.
+
 #${prefix} value(number) = null
 
 current value. When using [axisPointer.handle](xAxisPointer.handle), `value` can be set to define the initial position of axisPointer.
