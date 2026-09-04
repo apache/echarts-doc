@@ -118,6 +118,10 @@ The parameters of the event include:
 Whether the line and the area can trigger the event.
 
 
+## triggerLineOnlyEvent(boolean) = false
+
+Whether only `line` can trigger the event.
+
 ## step(string|boolean) = false
 
 <ExampleUIControlEnum options='start,middle,end' />
