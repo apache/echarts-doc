@@ -354,4 +354,6 @@ chart.setOption(option);
 + `measureText` 测量文本宽度，默认会通过`createCanvas`得到 Canvas 元素提供的接口来测量文本宽度，也可以替换成更轻量的实现。
 + `loadImage` 加载图片，在使用 Canvas 渲染模式的时候并且使用 URL 作为图片的时候需要提供。
 
+{{ use: echarts-time }}
+
 {{ use: echarts-graphic }}
