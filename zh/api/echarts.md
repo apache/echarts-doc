@@ -131,6 +131,59 @@ echarts.use(
 ```
 更详细的使用方式见 [在项目中引入 Apache ECharts](${handbookPath}basics/import) 一文
 
+### 在扩展包中注册工具栏功能
+
+扩展安装器可以通过 `registerToolboxFeature` 注册正式的工具栏功能。功能基类及其公开类型均从 `echarts/core` 导出。
+
+```ts
+import * as echarts from 'echarts/core';
+import {
+    EChartsExtensionInstaller,
+    ToolboxFeature,
+    ToolboxFeatureOption
+} from 'echarts/core';
+
+interface ExportDataFeatureOption extends ToolboxFeatureOption {
+    filename?: string;
+}
+
+class ExportDataFeature extends ToolboxFeature<ExportDataFeatureOption> {
+    onclick(): void {
+        const filename = this.model.get('filename');
+        // 在这里调用扩展包提供的导出器。
+        console.log(filename);
+    }
+
+    static defaultOption: ExportDataFeatureOption = {
+        show: true,
+        title: '导出数据',
+        icon: 'path://M6 2h8l4 4v16H6V2zm7 1.5V7h3.5L13 3.5z',
+        filename: 'chart-data'
+    };
+}
+
+const installExportData: EChartsExtensionInstaller = (registers) => {
+    registers.registerToolboxFeature('exportData', ExportDataFeature);
+};
+
+echarts.use(installExportData);
+```
+
+注册功能只会使该功能可用，不会自动为所有图表添加按钮。每个图表仍需显式配置该功能。可以通过 `show` 控制当前图表是否允许使用该功能，也可以在权限变化时动态更新：
+
+```ts
+chart.setOption({
+    toolbox: {
+        feature: {
+            exportData: {
+                show: canExport,
+                filename: 'sales'
+            }
+        }
+    }
+});
+```
+
 ## registerMap(Function)
 
 ```ts
