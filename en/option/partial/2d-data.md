@@ -137,6 +137,10 @@ series: [{
             + only part of year/month/date/time are specified: `'2012-03'`, `'2012-03-01'`, `'2012-03-01 05'`, `'2012-03-01 05:06'`.
             + separated by `"T"` or a space: `'2012-03-01T12:22:33.123'`, `'2012-03-01 12:22:33.123'`.
             + timezone specified: `'2012-03-01T12:22:33Z'`, `'2012-03-01T12:22:33+8000'`, `'2012-03-01T12:22:33-05:00'`.
+        + ISO week strings in `YYYY-Www` format (four-digit ISO week-numbering year and two-digit week), such as `'2026-W04'`, represent Monday of that week at local midnight. Week 1 contains January 4, so `'2020-W01'` represents December 30, 2019. Invalid week numbers are rejected, including week 53 in a year with only 52 ISO weeks. Appending a weekday, time, or timezone is not supported.
+
+            {{ use: partial-version(version = '6.2.0') }}
+
         + other date string format (all of these are treated as local time):
           `'2012'`, `'2012-3-1'`, `'2012/3/1'`, `'2012/03/01'`,
           `'2009/6/12 2:00'`, `'2009/6/12 2:05:08'`, `'2009/6/12 2:05:08.123'`.
