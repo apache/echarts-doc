@@ -62,6 +62,12 @@ Ellipsis to be displayed when `overflow` is set to `truncate`.
 
 + `'truncate'` Truncate the overflow lines.
 
+#${prefix} lineOverflow(string) = 'none'
+
+Determine how to display the text when it's overflow on height. Available when `overflow` and `height` are set.
+
++ `'truncate'` Truncate the overflow lines.
+
 {{ if: !${noRich} }}
 #${prefix} rich(Object)
 
