@@ -219,3 +219,15 @@ mapper 的返回值：
 
     不在 `'mousemove'` 或 `'click'` 时触发。
 
+## findPointOnConnectedCharts(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+{{ use: partial-version(
+    version = "6.2.0"
+) }}
+
+当某个操作被分发到通过 [echarts.connect](api.html#echarts.connect) 关联的图表时，原始的像素坐标在接收图表上没有意义。此时 ECharts 默认会从该图表自身的系列中挑选一个采样点，用于定位坐标轴指示器和 tooltip。
+
+设置为 `false` 可跳过该查找，使坐标轴指示器跟随关联的轴值（参见 [triggerOnNoData](~xAxis.axisPointer.triggerOnNoData)），而不会吸附到某个采样数据点。
+

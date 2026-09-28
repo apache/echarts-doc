@@ -118,3 +118,15 @@ Conditions to trigger tooltip. Options:
 
     Do not triggered by `'mousemove'` and `'click'`
 
+## findPointOnConnectedCharts(boolean) = true
+
+<ExampleUIControlBoolean default="true" />
+
+{{ use: partial-version(
+    version = "6.2.0"
+) }}
+
+When an action is dispatched to a chart linked by [echarts.connect](api.html#echarts.connect), the original pixel position is meaningless on the receiving chart. By default ECharts then picks a sample point from that chart's own series to place the axis pointer and tooltip.
+
+Set this to `false` to skip that lookup, so the axis pointer follows the linked axis value (see [triggerOnNoData](~xAxis.axisPointer.triggerOnNoData)) instead of snapping to a sample data point.
+
