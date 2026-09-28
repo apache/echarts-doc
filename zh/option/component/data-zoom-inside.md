@@ -78,6 +78,18 @@ const option = {
 + `'ctrl'`：表示按住 `ctrl` 和鼠标滚轮能触发缩放。
 + `'alt'`：表示按住 `alt` 和鼠标滚轮能触发缩放。
 
+## zoomOnMouseWheelAxis(string)
+
+<ExampleUIControlEnum options="horizontal,vertical" />
+
+限制由 [zoomOnMouseWheel](~dataZoom-inside.zoomOnMouseWheel) 触发的缩放只响应特定方向的鼠标滚轮。例如，当多个 `inside` 类型的 dataZoom 共用同一个坐标系时，横向和纵向的滚轮可以分别独立地驱动它们。可选值为：
+
++ 未设置（默认）：表示任意方向的鼠标滚轮都能触发缩放。
++ `'horizontal'`：表示仅横向鼠标滚轮（`deltaX`）能触发缩放。
++ `'vertical'`：表示仅纵向鼠标滚轮（`deltaY`）能触发缩放。
+
+触摸双指缩放（pinch）不受此选项影响，无论如何设置都会触发缩放。
+
 ## moveOnMouseMove(boolean|string) = true
 
 <ExampleUIControlEnum options="true,false,shift,ctrl,alt" default="true" />
@@ -101,6 +113,16 @@ const option = {
 + `'shift'`：表示按住 `shift` 和鼠标滚轮能触发数据窗口平移。
 + `'ctrl'`：表示按住 `ctrl` 和鼠标滚轮能触发数据窗口平移。
 + `'alt'`：表示按住 `alt` 和鼠标滚轮能触发数据窗口平移。
+
+## moveOnMouseWheelAxis(string)
+
+<ExampleUIControlEnum options="horizontal,vertical" />
+
+限制由 [moveOnMouseWheel](~dataZoom-inside.moveOnMouseWheel) 触发的数据窗口平移只响应特定方向的鼠标滚轮。例如，当多个 `inside` 类型的 dataZoom 共用同一个坐标系时，横向和纵向的滚轮可以分别独立地驱动它们。可选值为：
+
++ 未设置（默认）：表示任意方向的鼠标滚轮都能触发数据窗口平移。
++ `'horizontal'`：表示仅横向鼠标滚轮（`deltaX`）能触发数据窗口平移。
++ `'vertical'`：表示仅纵向鼠标滚轮（`deltaY`）能触发数据窗口平移。
 
 ## preventDefaultMouseMove(boolean) = true
 
