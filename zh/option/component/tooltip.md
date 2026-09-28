@@ -183,6 +183,73 @@ const option = {
 
 浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中，这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
 
+## renderMode(string) = 'richText'
+
+<ExampleUIControlEnum options="html,richText" default="html" />
+
+浮层的渲染模式，默认以 `'html` 即额外的 DOM 节点展示 tooltip；此外还可以设置为 `'richText'` 表示以富文本的形式渲染，渲染的结果在图表对应的 Canvas 中，这对于一些没有 DOM 的环境（如微信小程序）有更好的支持。
+
+<ExampleBaseOption name="tooltip" title="提示框 richText" title-en="Tooltip">
+const option = {
+        backgroundColor: '#eee',
+        tooltip: {
+            show: true,
+            renderMode: 'richText',
+            enterable: true,
+            // position: [100, 100],
+            trigger: 'axis',
+            z: 100,
+            formatter: (e) => {
+                return e.map((v, i) => {
+                    return `{label|${v.axisValueLabel}} = {c${i}|${v.value}}`
+                }).join('\n')
+            },
+            textStyle: {
+                rich: {
+                    label: {
+                        color: 'red',
+                    },
+                    c0: {
+                        color: 'orange',
+                    },
+                    c1: {
+                        color: 'yellow',
+                        backgroundColor: 'green',
+                        padding: 5,
+                        borderColor: 'red',
+                        borderWidth: 1,
+                    },
+                    c2: {
+                        color: 'orange',
+                        fontSize: 30,
+                        height: 50
+                    },
+                },
+            }
+        },
+        yAxis: {
+            type: 'value'
+        },
+        xAxis: {
+            type: 'category',
+            data: ['A', 'B', 'C']
+        },
+        series: [{
+            name: 'bar0',
+            type: 'bar',
+            data: [2, 3, 6]
+        }, {
+            name: 'bar1',
+            type: 'bar',
+            data: [1, 0, 9]
+        }, {
+            name: 'bar2',
+            type: 'bar',
+            data: ['-', 2, 1]
+        }]
+    };
+</ExampleBaseOption>
+
 ## confine(boolean) = false
 
 <ExampleUIControlBoolean default="false" />
