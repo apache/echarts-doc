@@ -1047,6 +1047,8 @@ Number of segments that the axis is split into. Note that this number serves onl
 
 This is unavailable for category axis.
 
+For `'log'` axes with [logMapping](~${componentType}.logMapping) set to `'asinh'` or `'symlog'`, `splitNumber` controls how many power-of-base tick candidates are shown. When the data range would produce more candidates than `splitNumber`, intermediate powers are automatically skipped while preserving exact power-of-base values.
+
 #${prefix} minInterval(number) = 0
 
 <ExampleUIControlNumber />
@@ -1094,6 +1096,49 @@ This is unavailable for 'category' and 'time' axes. Logged value should be passe
 <ExampleUIControlNumber default="10" />
 
 Base of logarithm, which is valid only for numeric axes with [type](~${componentType}.type): 'log'.
+
+When [logMapping](~${componentType}.logMapping) is `'asinh'` or `'symlog'`, `logBase` controls the spacing between tick marks (ticks are placed at powers of `logBase` away from zero) rather than the transform function itself, which is fixed by [logMapping](~${componentType}.logMapping).
+
+#${prefix} logMapping(string) = 'none'
+
+<ExampleUIControlEnum options="none,asinh,symlog" default="none" />
+
+{{ use: partial-version(
+    version = '6.2.0'
+) }}
+
+Selects the transform used for a logarithmic axis. Only valid when [type](~${componentType}.type) is `'log'`.
+
+**`'none'`** (default): Standard base-`b` logarithm. Only positive values are accepted; zero and negative values are filtered out. This is the same behaviour as all previous versions of ECharts.
+
+**`'asinh'`**: Uses the inverse hyperbolic sine transform `asinh(x / a0) * a0`, where `a0` is controlled by [logLinearWidth](~${componentType}.logLinearWidth). This function is defined for all real numbers, passes smoothly through zero, and behaves like a logarithm for large `|x|`. The axis is odd-symmetric: negative values produce a mirrored log-like scale below zero.
+
+**`'symlog'`**: Uses the symmetric log transform `sign(x) * ln(1 + |x| / C)`, where `C` is controlled by [logLinearWidth](~${componentType}.logLinearWidth). This is the symlog transform used by matplotlib and d3. It is explicitly linear in the range `[-C, C]` and logarithmic outside it.
+
+Both `'asinh'` and `'symlog'` accept zero and negative data values and produce a symmetric axis. Tick marks are placed at `0, +-a0, +-a0*b, +-a0*b^2, ...` (where `b` is [logBase](~${componentType}.logBase) and `a0` is [logLinearWidth](~${componentType}.logLinearWidth)). The [splitNumber](~${componentType}.splitNumber) option controls how many of these candidates are shown.
+
+Note: [alignTicks](~${componentType}.alignTicks) is not supported when `logMapping` is set and will be silently ignored.
+
+```ts
+yAxis: {
+    type: 'log',
+    logMapping: 'asinh'
+}
+```
+
+#${prefix} logLinearWidth(number) = 1
+
+<ExampleUIControlNumber default="1" min="0" step="1" />
+
+{{ use: partial-version(
+    version = '6.2.0'
+) }}
+
+The quasi-linear region half-width used by `'asinh'` and `'symlog'` [logMapping](~${componentType}.logMapping) modes. Only valid when [type](~${componentType}.type) is `'log'` and [logMapping](~${componentType}.logMapping) is not `'none'`.
+
+Controls how wide the near-zero linear band appears before the log-like curve takes over. A larger value pushes the linear-to-log transition further from zero, making the first labeled tick after `0` land at a higher value.
+
+The default of `1` matches the conventions used by d3's `scaleAsymlog` and matplotlib's `AsinhScale`. Ignored when [logMapping](~${componentType}.logMapping) is `'none'`.
 
 #${prefix} startValue(number) = 0
 
