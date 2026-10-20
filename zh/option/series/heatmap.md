@@ -83,6 +83,12 @@ option = {
     matrix = true
 ) }}
 
+{{ use: partial-cursor(
+    version = "6.1.0"
+) }}
+
+适用于 `cartesian2d`、`calendar` 和 `matrix` 坐标系中的热力图单元格，包括渐进式渲染。可通过 [data.cursor](~series-heatmap.data.cursor) 为单个单元格覆盖此配置。地理坐标系热力图使用不响应鼠标事件的栅格图像，不支持此配置。
+
 ## pointSize(number) = 20
 
 每个点的大小，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
@@ -198,6 +204,14 @@ option = {
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
+
+### cursor(string)
+
+{{ use: partial-version(
+    version = "6.1.0"
+) }}
+
+鼠标悬浮在此单元格上时的光标样式。未设置时继承 [series.cursor](~series-heatmap.cursor)。仅适用于 `cartesian2d`、`calendar` 和 `matrix` 坐标系中的热力图。
 
 ### name(string)
 
