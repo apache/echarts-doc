@@ -32,6 +32,12 @@ Here are the examples using it in rectangular coordinate and geographic coordina
     matrix = true
 ) }}
 
+{{ use: partial-cursor(
+    version = "6.1.0"
+) }}
+
+Applies to heatmap cells on `cartesian2d`, `calendar`, and `matrix`, including progressive rendering. Individual cells can override it with [data.cursor](~series-heatmap.data.cursor). Geo heatmaps render a silent raster image and do not support this option.
+
 ## pointSize(number) = 20
 
 Point size of each data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
@@ -147,6 +153,14 @@ Configurations of select state. Available when [selectedMode](~series-heatmap.se
 ## data(Array)
 
 {{ use: partial-2d-data-desc() }}
+
+### cursor(string)
+
+{{ use: partial-version(
+    version = "6.1.0"
+) }}
+
+The mouse cursor when hovering over this cell. Inherits [series.cursor](~series-heatmap.cursor) when not specified. Only applies to `cartesian2d`, `calendar`, and `matrix` heatmaps.
 
 ### name(string)
 
