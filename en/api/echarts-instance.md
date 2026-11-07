@@ -210,6 +210,10 @@ Gets DOM element of ECharts instance container.
 
 Gets `option` object maintained in current instance, which contains configuration item and data merged from previous `setOption` operations by users, along with user interaction states. For example, switching of legend, zooming area of data zoom, and so on. Therefore, a new instance that is exactly the same can be recovered from this option.
 
+For each `dataZoom` boundary, the returned [rangeMode](option.html#dataZoom-inside.rangeMode) records the effective mode, including changes made by dataZoom actions. In `'value'` mode, `startValue` or `endValue` retains the accepted input, including date strings and values outside the target axis's extent. The corresponding `start` or `end` percentage is `null`. An unspecified value boundary remains unspecified. In `'percent'` mode, the corresponding percentage and value are calculated values.
+
+Each target axis calculates its visible window from the input and its own bounds, so a returned value-mode boundary need not equal a visible axis limit. For example, if a dataZoom controls two axes bounded by `[-100, 100]` and `[-300, 300]`, with `startValue: -200` and `endValue: 200` in value mode, the visible ranges are `[-100, 100]` and `[-200, 200]`. `getOption()` retains `-200` and `200`, allowing an unchanged option to recover both axes' ranges.
+
 **Attention: **Attribute values in each component of the returned option are all in the form of an array, no matter it's single object or array of object when passed by `setOption`.
 For example:
 ```ts
