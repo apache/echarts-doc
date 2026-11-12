@@ -858,7 +858,9 @@ Color of axis name uses [axisLine.lineStyle.color](~${componentType}.axisLine.li
 
 <ExampleUIControlNumber step="0.5" default="15" />
 
-Gap between axis name and axis line.
+Gap used for positioning the axis name.
+
+When `nameMoveOverlap` is `false`, the gap is measured from the axis line. When it is `true`, ECharts first moves the axis name to avoid the labels and then applies `nameGap` from the adjusted position. Negative values are ignored in this case.
 
 #${prefix} nameRotate(number) = null
 
@@ -885,7 +887,9 @@ The content displayed at the end of the text after truncation.
 
 {{ use: partial-version(version = "6.0.0") }}
 
-Whether to move axis name to avoid overlap with axis labels.
+Whether to move the axis name to avoid overlap with the axis labels.
+
+When enabled, `nameGap` is applied after the overlap has been resolved.
 {{ /if }}
 
 #${prefix} inverse(boolean) = false
