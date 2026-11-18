@@ -87,7 +87,7 @@ option = {
 
 每个点的大小，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
 
-## blurSize(number) = 20
+## blurSize(number) = 30
 
 每个点模糊的大小，在地理坐标系([coordinateSystem](~series-heatmap.coordinateSystem): 'geo')上有效。
 

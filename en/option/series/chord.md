@@ -67,9 +67,9 @@ Minimum sector angle (0 ~ 360), used to prevent very small values from producing
 
 ~[600x600](${galleryViewPath}chord-minAngle&edit=1&reset=1)
 
-## padAngle(number) = 0
+## padAngle(number) = 3
 
-<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+<ExampleUIControlAngle step="1" min="0" max="360" default="3" />
 
 The gap angle between sectors (0 ~ 360).
 
