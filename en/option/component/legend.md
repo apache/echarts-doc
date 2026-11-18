@@ -89,9 +89,9 @@ Option:
     componentName = "legend"
 ) }}
 
-## itemGap(number) = 10
+## itemGap(number) = 8
 
-<ExampleUIControlNumber default="10" min="0" step="0.5" />
+<ExampleUIControlNumber default="8" min="0" step="0.5" />
 
 The distance between each legend, horizontal distance in horizontal layout, and vertical distance in vertical layout.
 

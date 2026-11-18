@@ -93,7 +93,7 @@ Whether to loop the special effect animation.
 
 Whether to go back when the animation reach the end.
 
-## large(boolean) = true
+## large(boolean) = false
 
 Whether to enable the optimization of large-scale lines graph. It could be enabled when there is a particularly large number of data(>=5k) .
 

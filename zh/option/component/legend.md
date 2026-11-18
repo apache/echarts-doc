@@ -172,9 +172,9 @@ const option = {
     componentName = "图例"
 ) }}
 
-## itemGap(number) = 10
+## itemGap(number) = 8
 
-<ExampleUIControlNumber default="10" min="0" step="0.5" />
+<ExampleUIControlNumber default="8" min="0" step="0.5" />
 
 图例每项之间的间隔。横向布局时为水平间隔，纵向布局时为纵向间隔。
 

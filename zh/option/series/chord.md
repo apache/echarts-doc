@@ -68,9 +68,9 @@ const option = {
 
 ~[600x600](${galleryViewPath}chord-minAngle&edit=1&reset=1)
 
-## padAngle(number) = 0
+## padAngle(number) = 3
 
-<ExampleUIControlAngle step="1" min="0" max="360" default="0" />
+<ExampleUIControlAngle step="1" min="0" max="360" default="3" />
 
 扇区之间的间隔角度（0 ~ 360）。
 

@@ -36,7 +36,7 @@ Here are the examples using it in rectangular coordinate and geographic coordina
 
 Point size of each data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
 
-## blurSize(number) = 20
+## blurSize(number) = 30
 
 Blur size of each data point. It is valid with [coordinateSystem](~series-heatmap.coordinateSystem) of 'geo' value.
 
