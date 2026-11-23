@@ -139,6 +139,10 @@ Configurations of select state. Available when [selectedMode](~series-bar.select
     componentNameInLink = 'bar'
 ) }}
 
+## stackGap(number) = 0
+
+The gap, in pixels, between adjacent same-sign segments in a stacked Cartesian bar. Set the same value on every series in the stack for a uniform gap. The outside edges of the whole stack stay in place, and axis values are unchanged. Thin segments remain at least 1 pixel along the value axis (or `barMinHeight` if larger), so the requested gap can be reduced when needed to preserve that minimum size.
+
 ## sampling(string)
 
 The downsampling strategy used when the data size is much larger than pixel size. It will improve the performance when turned on. Defaults to be turned off, indicating that all the data points will be drawn.
